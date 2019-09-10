@@ -27,6 +27,8 @@ import 'package:share/receive_share_state.dart';
 import 'package:share/share.dart';
 import 'plugins/dynamic_multi_column_layout.dart';
 import 'plugins/spoiler_card.dart';
+import 'package:workmanager/workmanager.dart' as workManager;
+import 'package:geolocator/geolocator.dart';
 
 import 'utils/logger.dart';
 
@@ -147,10 +149,11 @@ void main() async {
   };
 
   runZoned(() {
-    //AndroidAlarmManager.initialize().then((_) {
-      runApp(new HAClientApp());
-    //  print("Running MAIN isolate ${Isolate.current.hashCode}");
-    //});
+    workManager.Workmanager.initialize(
+        LocationManager.updateDeviceLocationIsolate,
+        isInDebugMode: Logger.isInDebugMode
+    );
+    runApp(new HAClientApp());
 
   }, onError: (error, stack) {
     Logger.e("$error");

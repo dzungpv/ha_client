@@ -110,6 +110,7 @@ class _MainPageState extends ReceiveShareState<MainPage> with WidgetsBindingObse
     _showInfoBottomBar(progress: true,);
     _subscribe().then((_) {
       ConnectionManager().init(loadSettings: true, forceReconnect: true).then((__){
+        LocationManager();
         _fetchData();
         StartupUserMessagesManager().checkMessagesToShow();
       }, onError: (e) {
@@ -122,6 +123,7 @@ class _MainPageState extends ReceiveShareState<MainPage> with WidgetsBindingObse
     _hideBottomBar();
     _showInfoBottomBar(progress: true,);
     ConnectionManager().init(loadSettings: false, forceReconnect: false).then((_){
+      LocationManager().updateDeviceLocation();
       _fetchData();
       //StartupUserMessagesManager().checkMessagesToShow();
     }, onError: (e) {
