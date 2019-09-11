@@ -123,7 +123,6 @@ class _MainPageState extends ReceiveShareState<MainPage> with WidgetsBindingObse
     _hideBottomBar();
     _showInfoBottomBar(progress: true,);
     ConnectionManager().init(loadSettings: false, forceReconnect: false).then((_){
-      LocationManager().updateDeviceLocation();
       _fetchData();
       //StartupUserMessagesManager().checkMessagesToShow();
     }, onError: (e) {

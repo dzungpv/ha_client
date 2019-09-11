@@ -150,7 +150,7 @@ void main() async {
 
   runZoned(() {
     workManager.Workmanager.initialize(
-        LocationManager.updateDeviceLocationIsolate,
+        updateDeviceLocationIsolate,
         isInDebugMode: Logger.isInDebugMode
     );
     runApp(new HAClientApp());
