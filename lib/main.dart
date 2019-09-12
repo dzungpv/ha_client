@@ -141,27 +141,11 @@ const appVersionAdd = "alpha1";
 const appVersion = "$appVersionNumber-$appVersionAdd";
 
 void main() async {
-  FlutterError.onError = (errorDetails) {
-    Logger.e( "${errorDetails.exception}");
-    if (Logger.isInDebugMode) {
-      FlutterError.dumpErrorToConsole(errorDetails);
-    }
-  };
-
-  runZoned(() {
-    workManager.Workmanager.initialize(
-        updateDeviceLocationIsolate,
-        isInDebugMode: Logger.isInDebugMode
-    );
-    runApp(new HAClientApp());
-
-  }, onError: (error, stack) {
-    Logger.e("$error");
-    Logger.e("$stack");
-    if (Logger.isInDebugMode) {
-      debugPrint("$stack");
-    }
-  });
+  workManager.Workmanager.initialize(
+      updateDeviceLocationIsolate,
+      isInDebugMode: Logger.isInDebugMode
+  );
+  runApp(new HAClientApp());
 }
 
 class HAClientApp extends StatelessWidget {

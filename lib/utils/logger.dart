@@ -37,7 +37,7 @@ class Logger {
 
   static void _writeToLog(String level, String message) {
     if (isInDebugMode) {
-      debugPrint('$message');
+      //debugPrint('$message');
     }
     DateTime t = DateTime.now();
     _log.add("${formatDate(t, ["mm","dd"," ","HH",":","nn",":","ss"])} [$level] :  $message");
